@@ -4,7 +4,7 @@ using Random = System.Random;
 
 public abstract class DamageObject : MonoBehaviour
 {
-    public int score = 100;
+    public float score = 100;
     
     private void Awake()
     {
@@ -25,13 +25,15 @@ public abstract class DamageObject : MonoBehaviour
         }
     }
 
-    protected void CheckDeadZone(Collision other)
+
+    protected void CheckDeadZone(Collider other)
     {
         Debug.Log($"Collider stay {other.gameObject.tag}");
-        if (other.gameObject.CompareTag(Tags.DeadZone))
+        if (other.CompareTag(Tags.DeadZone))
         {
             Debug.Log("Collider stay with DeadZone");
-            score -= (int) (0.9 * score * Time.deltaTime);
+            this.score -= 0.9f * score * Time.deltaTime;
+            Resize();
         }
     }
 

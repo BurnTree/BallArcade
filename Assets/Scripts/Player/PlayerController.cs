@@ -60,7 +60,7 @@ public class PlayerController : DamageObject
         CheckJumpPossibility(other);
     }
 
-    private void OnCollisionStay(Collision other)
+    private void OnTriggerStay(Collider other)
     {
         CheckDeadZone(other);
     }
