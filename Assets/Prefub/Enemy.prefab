@@ -139,7 +139,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dea58b75fe51dbb4f9743b44e30ba764, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  score: 100
+  score: 188
+  scoreRange: 20
   speed: 200
   reactionRadius: 5
   rb: {fileID: 983509043930089524}

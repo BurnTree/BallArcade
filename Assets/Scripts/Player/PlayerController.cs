@@ -7,29 +7,14 @@ public class PlayerController : DamageObject
     [SerializeField]
     protected float force = 100;
     [SerializeField]
-    private float jumpForce = 500;
-
-    private Rigidbody _rb;
+    private float jumpForce = 200;
     private bool _canJump;
-    private GameObject camera;
 
     void Start()
     {
         _rb = GetComponent<Rigidbody>();
     }
 
-    private void Update()
-    {
-        CheckCamera();
-    }
-
-    void CheckCamera()
-    {
-        if (camera == null)
-        {
-            camera = GameObject.FindGameObjectWithTag(Tags.Camera);
-        }
-    }
 
     // Update is called once per frame
     void FixedUpdate()
@@ -48,7 +33,6 @@ public class PlayerController : DamageObject
 
         if (Input.GetKeyDown(KeyCode.Space) && _canJump)
         {
-            Debug.Log("Jump");
             _canJump = false;
             _rb.AddForce(jumpForce * Vector3.up);
         }

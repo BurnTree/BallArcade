@@ -1,31 +1,20 @@
 using System;
 using Constants;
 using UnityEngine;
-using Random = System.Random;
+using Random = UnityEngine.Random;
 
 public class Enemy : DamageObject
 {
     public float speed = 200;
     public float reactionRadius = 2;
     
-    public Rigidbody rb;
     public SphereCollider reactionZone;
-    
-    private const float MaxSpeed = 0.1f;
     void Start()
     {
-        Random random = new Random();
-        rb.AddForce(new Vector3(GetRandomDouble(random) * speed,
-            GetRandomDouble(random) * speed,
-            GetRandomDouble(random) * speed));
-        score += random.Next(-20, 20);
-        Debug.Log(score);
+        _rb.AddForce(new Vector3(Random.Range(-1, 1) * speed,
+            Random.Range(-1, 1) * speed,
+            Random.Range(-1, 1) * speed));
         reactionZone.radius = reactionRadius;
-    }
-
-    float GetRandomDouble(Random random)
-    {
-        return (float) random.NextDouble() * 2 - 1;
     }
 
     private void OnCollisionEnter(Collision other)
@@ -53,21 +42,18 @@ public class Enemy : DamageObject
         if (other.CompareTag(Tags.Enemy) || other.CompareTag(Tags.Player))
         {
             DamageObject fighter = other.GetComponent<DamageObject>();
-            Vector3 dir;
-            if (this.score > fighter.score)
-            {
+            Vector3 dir = Vector3.zero;
+            if (this.score > fighter.score + scoreRange)
                 dir = fighter.transform.position - this.transform.position;
-            }
-            else
-            {
+            else if (this.score < fighter.score - scoreRange)
                 dir = this.transform.position - fighter.transform.position;
-            }
+            
             AddFixedForce(dir.normalized * Time.deltaTime);
         }
     }
 
     private void AddFixedForce(Vector3 dir)
     {
-        rb.AddForce(dir * speed);
+        _rb.AddForce(dir * speed);
     }
 }

@@ -109,9 +109,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01160dfac1c67424da984a2e9b620a58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  score: 200
+  score: 150
+  scoreRange: 20
   force: 200
-  jumpForce: 1000
+  jumpForce: 700
 --- !u!54 &8305804311368464291
 Rigidbody:
   m_ObjectHideFlags: 0

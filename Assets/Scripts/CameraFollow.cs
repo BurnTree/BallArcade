@@ -8,12 +8,12 @@ public class CameraFollow : MonoBehaviour
     private Transform target;
     
     [SerializeField]
-    private Vector3 _distance;
+    private Vector3 distance;
     void Update()
     {
         CheckTarget();
         FollowTarget();
-        CameraRotation();
+        // CameraRotation();
     }
 
     void CheckTarget()
@@ -29,9 +29,11 @@ public class CameraFollow : MonoBehaviour
     void FollowTarget()
     {
         if(target != null)
-            this.transform.position = target.position - _distance;
+            this.transform.position = target.position - distance;
     }
 
+    
+    // don't use
     void CameraRotation()
     {
         Vector3 vectorRotation = Vector3.zero;
@@ -42,7 +44,6 @@ public class CameraFollow : MonoBehaviour
         if (vectorRotation != Vector3.zero)
         {
             transform.Rotate(vectorRotation);
-            Debug.Log(transform.forward);
         }
     }
 }

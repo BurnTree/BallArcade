@@ -10,7 +10,7 @@ public class TemporaryPlatform : MonoBehaviour
     private bool isFade;
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag(Tags.Player))
+        if (collision.gameObject.CompareTag(Tags.Player) && !isFade)
         {
             isFade = true;
             initialFade = this.GetComponent<Renderer>().material.color.a;

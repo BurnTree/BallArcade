@@ -1,3 +1,4 @@
+using System;
 using Constants;
 using UnityEngine;
 using Random = System.Random;
@@ -5,22 +6,26 @@ using Random = System.Random;
 public abstract class DamageObject : MonoBehaviour
 {
     public float score = 100;
-    
+    public float scoreRange = 20;
+    protected Rigidbody _rb;
+
     private void Awake()
     {
-        Resize();
+        _rb = GetComponent<Rigidbody>();
+        Recalculate();
     }
+
     protected void CheckDamage(Collision other)
     {
         if (other.gameObject.CompareTag(Tags.Player) || other.gameObject.CompareTag(Tags.Enemy))
         {
             DamageObject otherDO = other.gameObject.GetComponent<DamageObject>();
-            if (this.score > otherDO.score)
+            if (this.score > otherDO.score + scoreRange)
             {
                 this.score += otherDO.score / 10;
-                Resize();
+                Recalculate();
             }
-            else if(this.score < otherDO.score)
+            else if (this.score < otherDO.score - scoreRange)
                 Destroy(this.gameObject);
         }
     }
@@ -28,17 +33,16 @@ public abstract class DamageObject : MonoBehaviour
 
     protected void CheckDeadZone(Collider other)
     {
-        Debug.Log($"Collider stay {other.gameObject.tag}");
-        if (other.CompareTag(Tags.DeadZone))
+        if (other.CompareTag(Tags.DeadZone) && score >= 20)
         {
-            Debug.Log("Collider stay with DeadZone");
-            this.score -= 0.9f * score * Time.deltaTime;
-            Resize();
+            this.score -= 0.1f * score * Time.deltaTime;
+            Recalculate();
         }
     }
 
-    protected void Resize()
+    protected void Recalculate()
     {
         this.transform.localScale = Vector3.one * score / 100;
+        _rb.mass = score / 100;
     }
 }

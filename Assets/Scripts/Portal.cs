@@ -25,7 +25,6 @@ public class Portal : MonoBehaviour
     {
         if (player.gameObject.CompareTag(Tags.Player))
         {
-            Debug.Log("player exit");
             isActive = true;
         }
     }

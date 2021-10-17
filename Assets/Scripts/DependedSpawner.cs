@@ -1,8 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using Constants;
 using UnityEngine;
-using Random = System.Random;
 
 public class DependedSpawner : Spawner
 {
@@ -30,9 +27,11 @@ public class DependedSpawner : Spawner
     {
         if (target)
         {
-            Random random = new Random();
-            mob.score = target.score - 20;
+            mob.score = target.score + Random.Range(-40, 40);
+            if (mob.score <= 10)
+                mob.score = 10;
         }
+
         createdObject = Instantiate(mob, this.transform.position, Quaternion.identity);
         status = StatusEnum.Waiting;
         spendTime = delay;
