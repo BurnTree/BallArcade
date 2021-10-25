@@ -17,7 +17,7 @@ public class PlayerController : DamageObject
 
 
     // Update is called once per frame
-    void FixedUpdate()
+    void Update()
     {
         Vector3 vectorDirection = Vector3.zero;
         if (Input.GetKey(KeyCode.W))

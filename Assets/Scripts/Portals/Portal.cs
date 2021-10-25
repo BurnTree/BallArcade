@@ -11,7 +11,7 @@ public class Portal : MonoBehaviour
 
     private void OnTriggerEnter(Collider player)
     {
-        if (player.gameObject.CompareTag(Tags.Player) && isActive)
+        if (player.gameObject.CompareTag(Tags.Player) && isActive && !ReferenceEquals(portalAim, null))
         {
             Transform transform = player.transform;
             Vector3 aimVector = portalAim.transform.position;

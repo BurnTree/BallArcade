@@ -18,7 +18,7 @@ public class CameraFollow : MonoBehaviour
 
     void CheckTarget()
     {
-        if (target == null)
+        if (ReferenceEquals(target, null))
         {
             GameObject playerObject = GameObject.FindGameObjectWithTag(Tags.Player);
             if (playerObject)
@@ -28,7 +28,7 @@ public class CameraFollow : MonoBehaviour
 
     void FollowTarget()
     {
-        if(target != null)
+        if(!ReferenceEquals(target, null))
             this.transform.position = target.position - distance;
     }
 

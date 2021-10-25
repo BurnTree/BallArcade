@@ -23,8 +23,8 @@ public class Spawner : MonoBehaviour
 
     protected void CalculateObjectCreation()
     {
-        if (createdObject == null && status == StatusEnum.Waiting)
-            status = StatusEnum.CreatingObject;
+        if (ReferenceEquals(createdObject, null) && status == StatusEnum.Waiting)
+        status = StatusEnum.CreatingObject;
 
         if (status == StatusEnum.CreatingObject)
             spendTime -= Time.deltaTime;
