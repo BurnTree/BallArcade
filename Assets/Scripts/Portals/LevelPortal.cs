@@ -5,11 +5,16 @@ using Constants;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class TheEnd : MonoBehaviour
+public class LevelPortal : MonoBehaviour
 {
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag(Tags.Player))
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+            NextLevel();
+    }
+
+    protected void NextLevel()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 }

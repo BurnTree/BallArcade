@@ -5,12 +5,14 @@ using Random = System.Random;
 
 public abstract class DamageObject : MonoBehaviour
 {
-    public float score = 100;
+    public float initialScore = 100;
+    public float score;
     public float scoreRange = 20;
     protected Rigidbody _rb;
 
     private void Awake()
     {
+        score = initialScore;
         _rb = GetComponent<Rigidbody>();
         Recalculate();
     }

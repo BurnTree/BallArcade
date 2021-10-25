@@ -5,9 +5,9 @@ using UnityEngine;
 public class PlayerController : DamageObject
 {
     [SerializeField]
-    protected float force = 100;
+    protected float speed = 200;
     [SerializeField]
-    private float jumpForce = 200;
+    private float jumpForce = 500;
     private bool _canJump;
 
     void Start()
@@ -29,7 +29,7 @@ public class PlayerController : DamageObject
         if (Input.GetKey(KeyCode.D))
             vectorDirection.x += 1f;
         if(vectorDirection != Vector3.zero)
-            _rb.AddForce(Time.deltaTime * force * vectorDirection);
+            _rb.AddForce(Time.deltaTime * speed * vectorDirection);
 
         if (Input.GetKeyDown(KeyCode.Space) && _canJump)
         {

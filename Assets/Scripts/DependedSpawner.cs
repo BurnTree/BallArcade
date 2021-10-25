@@ -25,14 +25,18 @@ public class DependedSpawner : Spawner
 
     public override void CreateMob()
     {
+        createdObject = Instantiate(mob, this.transform.position, Quaternion.identity);
+        
         if (target)
         {
-            mob.score = target.score + Random.Range(-40, 40);
-            if (mob.score <= 10)
-                mob.score = 10;
+            createdObject.score = target.score + Random.Range(-30, 10);
+            if (createdObject.score <= 50)
+                createdObject.score = 50;
+        } else if (checkRandomInit)
+        {
+            createdObject.score += Random.Range(-50, 100);
         }
-
-        createdObject = Instantiate(mob, this.transform.position, Quaternion.identity);
+        
         status = StatusEnum.Waiting;
         spendTime = delay;
     }

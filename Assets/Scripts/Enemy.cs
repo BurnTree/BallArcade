@@ -11,9 +11,9 @@ public class Enemy : DamageObject
     public SphereCollider reactionZone;
     void Start()
     {
-        _rb.AddForce(new Vector3(Random.Range(-1, 1) * speed,
-            Random.Range(-1, 1) * speed,
-            Random.Range(-1, 1) * speed));
+        _rb.AddForce(new Vector3(Random.Range(-1, 1),
+            0,
+            Random.Range(-1, 1)).normalized * speed);
         reactionZone.radius = reactionRadius;
     }
 

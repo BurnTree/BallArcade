@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3be44ac61760c74ea5f29b05e837bee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mob: {fileID: 0}
+  mob: {fileID: 983509043930089525, guid: eef6cc1cdd5265e438fe609e864a743c, type: 3}
   delay: 5
+  checkRandomInit: 1
 --- !u!1001 &7561748335892217932
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -84,7 +85,7 @@ PrefabInstance:
     - target: {fileID: 3789923879790738037, guid: 102d58835065641449316bc340ea912a,
         type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3789923879790738037, guid: 102d58835065641449316bc340ea912a,
         type: 3}
