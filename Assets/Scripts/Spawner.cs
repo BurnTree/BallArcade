@@ -23,8 +23,8 @@ public class Spawner : MonoBehaviour
 
     protected void CalculateObjectCreation()
     {
-        if (ReferenceEquals(createdObject, null) && status == StatusEnum.Waiting)
-        status = StatusEnum.CreatingObject;
+        if (createdObject == null && status == StatusEnum.Waiting)
+            status = StatusEnum.CreatingObject;
 
         if (status == StatusEnum.CreatingObject)
             spendTime -= Time.deltaTime;
@@ -38,6 +38,8 @@ public class Spawner : MonoBehaviour
         createdObject = Instantiate(mob, this.transform.position, Quaternion.identity);
         if (checkRandomInit)
             createdObject.score += Random.Range(-20, 20);
+        
+        createdObject.Recalculate();
         status = StatusEnum.Waiting;
         spendTime = delay;
     }

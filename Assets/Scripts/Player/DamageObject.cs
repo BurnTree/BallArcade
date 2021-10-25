@@ -42,7 +42,7 @@ public abstract class DamageObject : MonoBehaviour
         }
     }
 
-    protected void Recalculate()
+    public void Recalculate()
     {
         this.transform.localScale = Vector3.one * score / 100;
         _rb.mass = score / 100;

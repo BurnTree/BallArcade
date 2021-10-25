@@ -36,7 +36,8 @@ public class DependedSpawner : Spawner
         {
             createdObject.score += Random.Range(-50, 100);
         }
-        
+        createdObject.Recalculate();
+
         status = StatusEnum.Waiting;
         spendTime = delay;
     }
