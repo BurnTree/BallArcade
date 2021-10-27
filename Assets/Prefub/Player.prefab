@@ -110,8 +110,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   initialScore: 150
+  score: 0
   scoreRange: 20
-  speed: 200
+  speed: 400
   jumpForce: 700
 --- !u!54 &8305804311368464291
 Rigidbody:
