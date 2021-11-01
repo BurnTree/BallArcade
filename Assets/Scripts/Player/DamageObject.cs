@@ -7,7 +7,7 @@ public abstract class DamageObject : MonoBehaviour
 {
     public float initialScore = 100;
     public float score;
-    public float scoreRange = 20;
+    public float scoreRange = 10;
     protected Rigidbody _rb;
 
     private void Awake()
